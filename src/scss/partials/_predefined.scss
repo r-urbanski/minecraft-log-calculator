@@ -1,0 +1,17 @@
+@use 'var' as *;
+@use 'media' as *;
+
+.module, .full-module {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
+    @each $breakpoint, $size in $module-max-widths {
+        @include media-min($breakpoint) {
+            & {
+                max-width: $size;
+            }
+        }
+    }
+}

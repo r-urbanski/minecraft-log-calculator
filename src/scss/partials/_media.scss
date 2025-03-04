@@ -1,0 +1,37 @@
+// media query max-width mixin
+$breakpoints-max: (sm: 575.98px, md: 767.98px, lg: 991.98px, xl: 1199.98px, xxl: 1399.98px);
+@mixin media($breakpoint) {
+    @each $key, $size in $breakpoints-max {
+        @if $breakpoint == $key {
+            @media screen and (max-width: $size) {
+                @content;
+            }
+        }
+    }
+}
+
+// media query min-width mixin
+$breakpoints-min: (sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px);
+@mixin media-min($breakpoint) {
+    @each $key, $size in $breakpoints-min {
+        @if $breakpoint == $key {
+            @media screen and (min-width: $size) {
+                @content;
+            }
+        }
+    }
+}
+
+// media query custom max-width mixin
+@mixin media-custom($size) {
+    @media screen and (max-width: $size) {
+        @content;
+    }
+}
+
+// media query custom min-width mixin
+@mixin media-min-custom($size) {
+    @media screen and (min-width: $size) {
+        @content;
+    }
+}
