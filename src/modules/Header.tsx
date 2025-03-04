@@ -9,6 +9,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ calculators, currentCalculator, setCurrentCalculator }) => {
     return (
         <header>
+            <h1>Minecraft Calculators:</h1>
             <nav className='menu'>
                 {calculators.map(({ name, number }, index) => (
                     <button className={currentCalculator == number ? 'current' : ''} key={index} type='button' onClick={() => setCurrentCalculator(number)}>

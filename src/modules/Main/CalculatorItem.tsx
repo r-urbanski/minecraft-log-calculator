@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { CalculatorItemProps } from '../../assets/utils/interfaces'
-import { Calculations } from '../../assets/utils/calculations'
+import Calculations from '../../assets/utils/calculations'
 
 const CalculatorItem: React.FC<CalculatorItemProps> = ({ name, image, functionName }) => {
     const [count, setCount] = useState<string>('')
@@ -42,21 +42,17 @@ const CalculatorItem: React.FC<CalculatorItemProps> = ({ name, image, functionNa
 
     return (
         <tr>
-            <td className='item'>
+            <td className='icon'>
                 <img src={image} alt={name} />
                 <p>{name}</p>
             </td>
-            <td>
+            <td className='item-count'>
                 <input type='text' value={count} onChange={event => stripToFour(functionName, event.target.value)} />
             </td>
-            <td>
+            <td className='logs-count'>
                 <input type='text' value={logsNeeded} disabled />
             </td>
         </tr>
-        // <div className='item'>
-        //     <img src={image} alt={name} />
-        //     <p>{name}</p>
-        // </div>
     )
 }
 

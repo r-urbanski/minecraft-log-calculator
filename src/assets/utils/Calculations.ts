@@ -1,5 +1,5 @@
 // for wood
-export class Calculations {
+export default class Calculations {
     private count: number
     private rest: number
 

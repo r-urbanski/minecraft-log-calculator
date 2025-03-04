@@ -5,13 +5,21 @@
 
 header {
     background-color: $body-bg-secondary;
-    padding: 30px;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100px;
 
     nav.menu {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: .5rem;
+        gap: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
     }
 
     button {
@@ -20,152 +28,169 @@ header {
         cursor: pointer;
 
         &.current {
-            color: $text-color-primary;
+            color: $primary-text;
             cursor: auto;
         }
     }
 }
 
 footer {
+    height: 75px;
     padding: 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main {
-    flex: 1;
+    height: calc(100dvh - 100px - 75px);
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 5rem;
-    // padding: 30px;
+    gap: 3rem;
 }
 
-main > h2 {
-    text-align: center;
-}
-
-section.items-list {
-    padding: 10px 30px;
-    max-width: 350px;
-    height: 90%;
-    max-height: 690px;
+section.items-list-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: flex-start;
 
-    div.item {
-        flex: 0 0 calc(50% - .5rem);
-        height: 100px;
-        // width: 100px;
-        text-align: center;
+    height: 100%;
+    // outline: red 1px solid;
+    flex: 0 0 300px;
+
+    @media screen and (max-height: 900px){
+        flex: 0 0 500px;
+    }
+
+    aside.items-list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+        gap: 20px 0;
+    }
+
+    button {
+        flex: 0 0 33.333%;
         cursor: pointer;
-        transition: opacity .3s ease;
+        transition: opacity 0.3s ease;
 
         &.selected {
             opacity: 0.3;
         }
-        
+
         img {
-            // max-width: 80%;
-            max-height: 70px;
-            aspect-ratio: 1;
-            object-fit: cover;
-        }
-
-        p {
-            font-size: 1rem;
-            margin: 0;
+            max-height: 85px;
+            object-fit: contain;
         }
     }
 }
 
-main > h2:nth-of-type(2) {
-    margin-top: 50px;
-}
+section.calculator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 
-section.up-calc {
-    height: 90%;
-    max-height: 690px;
-    padding: 10px 30px;
+    height: 100%;
+    // outline: red 1px solid;
+    flex: 0 0 calc(100% - 300px - 3rem);
 
-    h2 {
-        text-align: center;
-    }
-}
-
-section.calculator {
-    background-color: $body-bg-secondary;
-    height: 88%;
-    overflow: auto;
-    min-width: 600px;
-    max-width: 800px;
-    padding: 0;
-
-    table {
+    section.calculator {
+        height: 100%;
         width: 100%;
-        position: relative;
-        border: none;
+        overflow:auto;
+        // scrollbar-gutter: stable;
+        background-color: $body-bg-secondary;
+        margin-bottom: 20px;
+
+        &::-webkit-scrollbar {
+            background: transparent;
+            width: 5px;
+            margin: 50px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #474747;
+            width: 5px;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+    }
+
+    table.calculator-inner {
+        background-color: $body-bg-secondary;
         border-collapse: collapse;
+        width: 100%;
 
-        th {
-            font-weight: normal;
-            font-size: 1.5rem;
-            background-color: mix(black, $body-bg-secondary, 50%);
-            padding: 20px;
+        thead {
+            background-color: rgb(10.5, 10.5, 10.5);
 
-            &:nth-of-type(1) {
-                width: 150px;
-            }
+            th {
+                font-weight: normal;
+                font-size: 1.5rem;
+                padding: 10px 20px;
 
-            &:nth-of-type(2) {
-                width: calc(150px + 40px);
+                &:nth-of-type(1) {
+                    width: 15%;
+                }
+
+                &:nth-of-type(2) {
+                    width: 35%;
+                }
+
+                &:nth-of-type(3) {
+                    width: calc(50% + 5px);
+                }
             }
         }
-    
-        td {
-            text-align: center;
-            padding: 20px;
+
+        tbody {
+            tr {
+                max-height: 100px;
+            }
+
+            td {
+                padding: 10px 20px;
+                text-align: center;
+            }
+
+            td.icon {
+                width: 15%;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+
+            td.item-count {
+                width: 35%;
+            }
+
+            td.logs-count {
+                width: calc(50% + 5px);
+            }
         }
 
-        td.item {
+        input {
+            background-color: $body-bg-primary;
+            border: none;
+            border-bottom: 3px solid #fff;
+            font-size: 2rem;
             width: 150px;
             text-align: center;
-            margin-bottom: 30px;
-    
-            img {
-                max-width: 100%;
-                max-height: 65px;
-                object-fit: contain;
-                margin-bottom: 5px;
+            color: #fff;
+            padding: 15px;
+
+            &[disabled] {
+                width: 200px;
             }
         }
-    }
-
-    input {
-        background-color: $body-bg-primary;
-        border: none;
-        border-bottom: 3px solid #fff;
-        font-size: 3rem;
-        width: 150px;
-        text-align: center;
-        color: #fff;
-
-        &[disabled] {
-            width: 200px;
-        }
-    }
-
-    &::-webkit-scrollbar {
-        background-color: $body-bg-secondary;
-        width: 5px;
-        margin: 50px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: #353535;
-        width: 5px;
-        border-radius: 10px;
     }
 }

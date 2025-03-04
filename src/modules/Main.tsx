@@ -11,8 +11,14 @@ const Main: React.FC = () => {
 
     return (
         <main className='module'>
-            <WoodList selectedList={selectedList} setSelectedList={setSelectedList} setCalculatorList={setCalculatorList} />
-            <Calculator calculatorList={calculatorList} />
+            <section className='items-list-container'>
+                <h2>Choose items</h2>
+                <WoodList selectedList={selectedList} setSelectedList={setSelectedList} setCalculatorList={setCalculatorList} />
+            </section>
+            <section className='calculator-container'>
+                <h2>How many?</h2>
+                <Calculator calculatorList={calculatorList} />
+            </section>
         </main>
     )
 }

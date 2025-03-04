@@ -44,15 +44,14 @@ const WoodList: React.FC<ListProps> = ({ selectedList, setSelectedList, setCalcu
     }
 
     return (
-        <section className='items-list'>
-            <h2>Choose Items</h2>
+        <aside className='items-list'>
             {selectedList.map(({ selected, name, image }, index) => (
-                <div key={index} className={`item ${selected ? 'selected' : ''}`} onClick={() => reduceList(name, selectedList)}>
+                <button type='button' key={index} className={`item ${selected ? 'selected' : ''}`} onClick={() => reduceList(name, selectedList)}>
                     <img src={image} alt={name} />
                     <p>{name}</p>
-                </div>
+                </button>
             ))}
-        </section>
+        </aside>
     )
 }
 
