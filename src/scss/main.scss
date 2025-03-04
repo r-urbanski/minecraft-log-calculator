@@ -23,19 +23,26 @@ header {
 
     button {
         font-size: 1.25rem;
-        color: rgba($text-color-primary, 0.5);
         cursor: pointer;
         transition: color 0.3s ease;
 
-        &.current {
+        // &.current {
+        //     color: $primary;
+        //     cursor: auto;
+        // }
+
+        span {
             color: $primary;
-            cursor: auto;
         }
     }
 
     @include media(sm) {
         nav.menu {
             @include flex(center, space-evenly);
+        }
+
+        button {
+            font-size: 1rem;
         }
     }
 }
@@ -62,7 +69,7 @@ main {
     transition: opacity 0.3s ease;
     opacity: 1;
     flex: 1; // height: $main-height;
-    @include flex(center, null, 2rem, column);
+    @include flex(center, null, 1.5rem, column);
 
     h2 {
         margin: 20px 0 20px 0;
@@ -80,6 +87,12 @@ main {
         h2 {
             font-size: 1.25rem;
             text-align: left;
+        }
+    }
+
+    @include media(sm) {
+        h2 {
+            font-size: 1.1rem;
         }
     }
 }
@@ -177,7 +190,7 @@ section.items-list-container {
 
 section.calculator-container {
     @include flex(center, null, null, column);
-    margin-bottom: calc(2rem + 20px);
+    margin-bottom: 2rem;
 
     section.calculator {
         box-shadow: $box-shadow;
@@ -195,6 +208,10 @@ section.calculator-container {
 
         &.info {
             @include flex(center, center);
+
+            h3 {
+                font-size: 1.25rem;
+            }
         }
 
         &.header-row {
@@ -241,14 +258,10 @@ section.calculator-container {
                     }
                 }
             }
-
-            &.cell.heading {
-                font-size: 1rem;
-            }
         }
     }
 
-    @include media(xl) {
+    @include media(xxl) {
         margin-bottom: 0;
     }
 
@@ -274,6 +287,9 @@ section.calculator-container {
                     &[disabled] {
                         width: 120px;
                     }
+                }
+                &.cell.heading {
+                    font-size: 1rem;
                 }
             }
         }
@@ -301,6 +317,9 @@ section.calculator-container {
                     &[disabled] {
                         width: 100px;
                     }
+                }
+                &.cell.heading {
+                    font-size: 0.9rem;
                 }
             }
         }
@@ -333,36 +352,52 @@ section.calculator-container {
     }
 }
 
-aside.all-needed-logs {
+section.summary-container {
     position: fixed;
     z-index: 10;
     right: 50px;
     bottom: 50px;
     width: 390px;
-    background-color: #000;
-    // color: $body-bg-secondary;
-    box-shadow: $box-shadow;
-    border-radius: 10px;
-    padding: 10px 20px;
+    aside.all-needed-logs {
+        background-color: #000;
+        // color: $body-bg-secondary;
+        box-shadow: $box-shadow;
+        border-radius: 10px;
+        padding: 10px 20px;
 
-    h2 {
-        text-align: left;
+        h2 {
+            text-align: left;
+        }
     }
 
-    @include media(xl) {
+    @include media(xxl) {
         position: static;
         z-index: unset;
         right: unset;
         bottom: unset;
-        max-width: 390px;
+        max-width: 540px;
         width: calc(100% - 20px);
-        margin-left: 0.75rem;
-        margin-right: 0.75rem;
 
-        margin-bottom: calc(2rem + 20px);
+        margin-bottom: calc(2rem);
 
-        h2 {
-            font-size: 1.1rem;
+        aside.all-needed-logs {
+            background-color: $body-bg-secondary;
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    @include media(md) {
+        // max-width: unset;
+        width: 100%;
+
+        aside.all-needed-logs {
+            width: 100%;
+
+            h2 {
+                font-size: 1rem;
+            }
         }
     }
 }

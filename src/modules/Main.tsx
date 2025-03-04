@@ -37,14 +37,19 @@ const Main: React.FC = () => {
                 </h2>
                 <Calculator calculatorList={calculatorList} setAllNeededLogs={setAllNeededLogs} />
             </section>
-            <aside className='all-needed-logs'>
+            <section className='summary-container module'>
                 <h2>
-                    All needed <span>logs</span>: {allNeededLogs}
+                    <span>S</span>u<span>m</span>m<span>a</span>r<span>y</span>!
                 </h2>
-                <h2>
-                    in <span>stacks</span>: {logsInStacks}
-                </h2>
-            </aside>
+                <aside className='all-needed-logs'>
+                    <h2>
+                        All needed <span>logs</span>: {allNeededLogs}
+                    </h2>
+                    <h2>
+                        in <span>stacks</span>: {logsInStacks}
+                    </h2>
+                </aside>
+            </section>
         </main>
     )
 }
