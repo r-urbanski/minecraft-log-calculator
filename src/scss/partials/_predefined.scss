@@ -1,7 +1,8 @@
 @use 'var' as *;
 @use 'media' as *;
 
-.module, .full-module {
+.module,
+.full-module {
     width: 100%;
     margin: 0 auto;
     padding-left: 0.75rem;
@@ -14,4 +15,17 @@
             }
         }
     }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hide {
+    opacity: 0;
 }

@@ -1,22 +1,20 @@
 // for wood
 export default class Calculations {
     private count: number
-    private rest: number
 
     constructor(count: string) {
         this.count = parseInt(count)
-        this.rest = 0
-        console.log(this.rest)
     }
 
-    public wood() {
+    public wood(): number {
         let woodNum = Math.ceil(this.count / 3)
         let logsNum = woodNum * 4
         return logsNum
     }
 
-    public logs() {
-        return this.count
+    public logs(): number {
+        let logsNum = this.count
+        return logsNum
     }
 
     public planks() {

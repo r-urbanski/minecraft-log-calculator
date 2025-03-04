@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ListItems, ListProps, CalculatorItems } from '../../assets/utils/interfaces'
+import { ListItems, ListProps } from '../../assets/utils/interfaces'
 
 const WoodList: React.FC<ListProps> = ({ selectedList, setSelectedList, setCalculatorList }) => {
     const [tempList, setTempList] = useState<ListItems[]>([])

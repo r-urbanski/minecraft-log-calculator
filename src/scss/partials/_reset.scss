@@ -1,4 +1,5 @@
 @use 'var' as *;
+@use 'mixins' as *;
 
 @font-face {
     font-family: $font-family;
@@ -23,13 +24,16 @@ body {
 }
 
 div#root {
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: 100dvh;
+    @include flex(stretch, center, null, column);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
     margin: 20px 0;
 }
@@ -44,12 +48,14 @@ p {
     }
 }
 
-ol, ul {
+ol,
+ul {
     padding: 0;
     list-style-position: inside;
 }
 
-fieldset, figure {
+fieldset,
+figure {
     margin: 0;
     padding: 0;
     border: 0;
@@ -60,14 +66,6 @@ button {
     color: $text-color-primary;
     border: none;
     outline: none;
-}
-
-p:has(a) {
-    font-size: 1.25rem;
-
-    a {
-        font-size: 1.25rem;
-        color: $primary-text;
-    }
-    
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }

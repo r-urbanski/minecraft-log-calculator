@@ -19,10 +19,25 @@ export interface CalculatorItems {
 
 export interface CalculatorProps {
     calculatorList: CalculatorItems[]
+    setAllNeededLogs: React.Dispatch<React.SetStateAction<number>>
+}
+
+export interface LogsCount {
+    wood: number
+    log: number
+    planks: number
+    slab: number
+    stairs: number
+    fence: number
+    fence_gate: number
+    door: number
+    trapdoor: number
+    sign: number
 }
 
 export interface CalculatorItemProps {
     name: string
     image: string
     functionName: string
+    setLogsCount: React.Dispatch<React.SetStateAction<LogsCount>>
 }

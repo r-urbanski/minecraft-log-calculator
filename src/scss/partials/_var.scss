@@ -1,9 +1,5 @@
 // colors
-$primary-bg: #007acc;
-$primary-text: #0099ff;
-
-$secondary-bg: #6900cc;
-$secondary-text: #9421ff;
+$primary: #03b741;
 
 $body-bg-primary: #1e1e1e;
 $body-bg-secondary: #151515;
@@ -19,18 +15,23 @@ $fs-tags: (
     p: $font-size,
     a: $font-size,
     li: $font-size,
-    
+
     h1: $font-size * 2.5,
     h2: $font-size * 2,
     h3: $font-size * 1.75,
     h4: $font-size * 1.5,
     h5: $font-size * 1.25,
-    h6: $font-size * 1.125
+    h6: $font-size * 1.125,
 );
 
 // sizes
-$module-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1320px);
-
+$module-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+);
 
 // other styling
 $box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

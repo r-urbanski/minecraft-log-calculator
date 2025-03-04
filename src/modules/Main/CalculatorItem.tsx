@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { CalculatorItemProps } from '../../assets/utils/interfaces'
-import Calculations from '../../assets/utils/calculations'
+import Calculations from '../../assets/utils/Calculations.ts'
 
-const CalculatorItem: React.FC<CalculatorItemProps> = ({ name, image, functionName }) => {
+const CalculatorItem: React.FC<CalculatorItemProps> = ({ name, image, functionName, setLogsCount }) => {
     const [count, setCount] = useState<string>('')
-    const [logsNeeded, setLogsNeeded] = useState<string>('')
+    const [logsNeeded, setLogsNeeded] = useState<number>(0)
 
     const stripToFour = (functionName: string, inputValue: string) => {
         const possibleKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '']
@@ -14,13 +14,12 @@ const CalculatorItem: React.FC<CalculatorItemProps> = ({ name, image, functionNa
         if (inputValue.length === 1 && inputValue === '0') return
 
         let newValue: string = inputValue
-        if (inputValue.length > 4) newValue = inputValue.slice(0, -1)
-        setCount(newValue)
-
-        if (inputValue.length === 0) {
-            setLogsNeeded('')
+        if (inputValue.length > 4) {
+            newValue = inputValue.slice(0, -1)
             return
         }
+
+        setCount(newValue)
 
         const calculations = new Calculations(newValue)
         const functionsMap: Record<string, Function> = {
@@ -36,23 +35,35 @@ const CalculatorItem: React.FC<CalculatorItemProps> = ({ name, image, functionNa
             sign: () => calculations.signs(),
         }
 
-        const logsNumber = functionsMap[functionName](newValue)
-        setLogsNeeded(`${logsNumber}`)
+        let logsNumber = 0
+        if (inputValue.length === 0) {
+            setLogsNeeded(0)
+            // return
+        } else {
+            logsNumber = functionsMap[functionName](newValue)
+        }
+
+        setLogsCount(prev => {
+            console.log(prev)
+            return { ...prev, [functionName]: logsNumber }
+        })
+
+        setLogsNeeded(logsNumber)
     }
 
     return (
-        <tr>
-            <td className='icon'>
+        <article className='item-row'>
+            <div className='cell icon'>
                 <img src={image} alt={name} />
                 <p>{name}</p>
-            </td>
-            <td className='item-count'>
+            </div>
+            <div className='cell item'>
                 <input type='text' value={count} onChange={event => stripToFour(functionName, event.target.value)} />
-            </td>
-            <td className='logs-count'>
+            </div>
+            <div className='cell logs'>
                 <input type='text' value={logsNeeded} disabled />
-            </td>
-        </tr>
+            </div>
+        </article>
     )
 }
 
