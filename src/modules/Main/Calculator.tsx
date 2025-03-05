@@ -16,19 +16,24 @@ const Calculator: React.FC<CalculatorProps> = ({ selectedList, calculatorList, s
         sign: 0,
     })
 
+    const toSafeName = (name: string) => {
+        const newName = name.toLowerCase()
+        return newName.replace(' ', '_')
+    }
+
+    useEffect(() => {
+        selectedList.map(item => {
+            if (item.selected === false) {
+                setLogsCount(prev => ({ ...prev, [toSafeName(item.name)]: 0 }))
+            }
+        })
+    }, [selectedList])
+
     useEffect(() => {
         let allLogsSum = 0
         Object.values(logsCount).forEach(numOfLogs => (allLogsSum += numOfLogs))
         setAllNeededLogs(allLogsSum)
     }, [logsCount])
-
-    useEffect(() => {
-        selectedList.map(item => {
-            if (item.selected === false) {
-                setLogsCount(prev => ({ ...prev, [item.name]: 0 }))
-            }
-        })
-    }, [selectedList])
 
     return (
         <section className='calculator'>
