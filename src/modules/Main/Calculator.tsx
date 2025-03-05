@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { CalculatorProps, LogsCount } from '../../assets/utils/interfaces'
 import CalculatorItem from './CalculatorItem'
 
-const Calculator: React.FC<CalculatorProps> = ({ calculatorList, setAllNeededLogs }) => {
+const Calculator: React.FC<CalculatorProps> = ({ selectedList, calculatorList, setAllNeededLogs }) => {
     const [logsCount, setLogsCount] = useState<LogsCount>({
         wood: 0,
         log: 0,
@@ -18,11 +18,17 @@ const Calculator: React.FC<CalculatorProps> = ({ calculatorList, setAllNeededLog
 
     useEffect(() => {
         let allLogsSum = 0
-        Object.values(logsCount).forEach(numOfLogs => {
-            allLogsSum += numOfLogs
-        })
+        Object.values(logsCount).forEach(numOfLogs => (allLogsSum += numOfLogs))
         setAllNeededLogs(allLogsSum)
     }, [logsCount])
+
+    useEffect(() => {
+        selectedList.map(item => {
+            if (item.selected === false) {
+                setLogsCount(prev => ({ ...prev, [item.name]: 0 }))
+            }
+        })
+    }, [selectedList])
 
     return (
         <section className='calculator'>

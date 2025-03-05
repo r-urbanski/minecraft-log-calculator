@@ -44,7 +44,6 @@ const CalculatorItem: React.FC<CalculatorItemProps> = ({ name, image, functionNa
         }
 
         setLogsCount(prev => {
-            console.log(prev)
             return { ...prev, [functionName]: logsNumber }
         })
 

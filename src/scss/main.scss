@@ -4,17 +4,12 @@
 @use 'partials/reset' as *;
 @use 'partials/predefined' as *;
 
-// header i footer
-// $frame-height: 60px;
-// $main-height: calc(100dvh - $frame-height * 2);
-
 header {
     background-color: $body-bg-secondary;
 
     nav.menu {
         @include flex(center, center, 1rem);
         padding: 15px 30px;
-        // height: $frame-height;
     }
 
     h1 {
@@ -190,7 +185,6 @@ section.items-list-container {
 
 section.calculator-container {
     @include flex(center, null, null, column);
-    margin-bottom: 2rem;
 
     section.calculator {
         box-shadow: $box-shadow;
@@ -259,10 +253,6 @@ section.calculator-container {
                 }
             }
         }
-    }
-
-    @include media(xxl) {
-        margin-bottom: 0;
     }
 
     @include media(md) {
@@ -353,62 +343,26 @@ section.calculator-container {
 }
 
 section.summary-container {
-    position: fixed;
-    z-index: 10;
-    right: 50px;
-    bottom: 50px;
-    width: 390px;
+    width: min(100%, 540px);
+    margin-bottom: 2rem;
+    padding: 0 10px;
+
     aside.all-needed-logs {
-        background-color: #000;
-        // color: $body-bg-secondary;
+        background-color: $body-bg-secondary;
         box-shadow: $box-shadow;
         border-radius: 10px;
         padding: 10px 20px;
-
-        h2 {
-            text-align: left;
-        }
     }
 
     @include media(xxl) {
-        position: static;
-        z-index: unset;
-        right: unset;
-        bottom: unset;
-        max-width: 540px;
-        width: calc(100% - 20px);
-
-        margin-bottom: calc(2rem);
-
-        aside.all-needed-logs {
-            background-color: $body-bg-secondary;
-            h2 {
-                font-size: 1.5rem;
-            }
+        aside.all-needed-logs h2 {
+            font-size: 1.5rem;
         }
     }
 
     @include media(md) {
-        // max-width: unset;
-        width: 100%;
-
-        aside.all-needed-logs {
-            width: 100%;
-
-            h2 {
-                font-size: 1rem;
-            }
+        aside.all-needed-logs h2 {
+            font-size: 1rem;
         }
     }
 }
-
-// ::-webkit-scrollbar {
-//     background: $body-bg-secondary;
-//     width: 5px;
-// }
-
-// ::-webkit-scrollbar-thumb {
-//     background-color: #0b0b0b;
-//     border-radius: 10px;
-//     width: 5px;
-// }

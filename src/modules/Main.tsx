@@ -35,7 +35,7 @@ const Main: React.FC = () => {
                 <h2>
                     How <span>many</span> items?
                 </h2>
-                <Calculator calculatorList={calculatorList} setAllNeededLogs={setAllNeededLogs} />
+                <Calculator selectedList={selectedList} calculatorList={calculatorList} setAllNeededLogs={setAllNeededLogs} />
             </section>
             <section className='summary-container module'>
                 <h2>

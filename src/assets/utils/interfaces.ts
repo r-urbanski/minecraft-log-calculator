@@ -18,6 +18,7 @@ export interface CalculatorItems {
 }
 
 export interface CalculatorProps {
+    selectedList: ListItems[]
     calculatorList: CalculatorItems[]
     setAllNeededLogs: React.Dispatch<React.SetStateAction<number>>
 }
