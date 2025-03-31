@@ -1,14 +1,5 @@
-import { useEffect, useState } from 'react'
-
 const Footer: React.FC = () => {
     const date = new Date().getFullYear()
-    const [win, setWin] = useState(window.innerWidth)
-
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            setWin(window.innerWidth)
-        })
-    }, [])
 
     return (
         <footer>
